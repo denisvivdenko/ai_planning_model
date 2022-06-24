@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from task import Task
+
 
 @dataclass
 class Bottle:
@@ -42,4 +44,7 @@ def goal():
     print("Goal found")
 
 domain_actions = [fill_in, pour_out, empty]
-dimain_objects = [b]
+domain_objects = [bottle_1, bottle_2]
+domain_goal = goal
+
+domain = Task(domain_actions, domain_objects, domain_goal)
