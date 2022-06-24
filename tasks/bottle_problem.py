@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 
-from task import Task
+from task import Task, unique_id
 
 
 @dataclass
+@unique_id
 class Bottle:
     volume: int
     fill: int

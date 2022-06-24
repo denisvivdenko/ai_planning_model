@@ -1,9 +1,6 @@
-from ast import arguments
-from asyncio import tasks
-from copy import deepcopy
 import numpy as np
+from copy import deepcopy
 from inspect import signature
-
 
 from task import Task
 
@@ -19,7 +16,7 @@ def solve_attempt(task: Task, max_plan_length: int = 250) -> list:
             arguments_count = len(signature(current_action).parameters)
             arguments = np.random.choice(objects, size=arguments_count)
             current_action(arguments)
-            plan.append((current_action, arguments))
+            plan.append((current_action, [argument if isinstance(argument, (str, int, float, bool)) else argument.id for argument in arguments]))
             goal()
         except:
             break
